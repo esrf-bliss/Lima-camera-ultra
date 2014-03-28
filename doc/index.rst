@@ -16,7 +16,7 @@ Sustained Spectral Rate 20 KHz (spectra per second) Maximum
 Frame Period            <500 ns Minimum
 Spectral Sensitivity    5 – 17KeV 300µm thickness. 500µm also available.
 Output                  Gigabit Ethernet
-Pixel conﬁguration      Si 512 linear strips @ 50µm pitch
+Pixel configuration     Si 512 linear strips @ 50µm pitch
 ADC Dynamic Range       16 Bit
 Synchronisation Inputs  TTL or Fibre Optic
 Integration Time        <1us - 650us frames
