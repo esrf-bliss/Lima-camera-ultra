@@ -33,7 +33,7 @@ namespace Ultra
 %End
 
   public:
-	Interface(Ultra::Camera& cam);
+	Interface(Ultra::Camera& cam /KeepReference/);
 	virtual ~Interface();
 
  	virtual void getCapList(std::vector<HwCap> &cap_list /Out/) const;
