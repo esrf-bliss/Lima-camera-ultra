@@ -46,9 +46,9 @@
 #include <signal.h>
 
 #include "UltraNet.h"
-#include "ThreadUtils.h"
-#include "Exceptions.h"
-#include "Debug.h"
+#include "lima/ThreadUtils.h"
+#include "lima/Exceptions.h"
+#include "lima/Debug.h"
 
 using namespace lima::Ultra;
 

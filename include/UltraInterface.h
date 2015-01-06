@@ -27,7 +27,7 @@
 #ifndef ULTRAINTERFACE_H_
 #define ULTRAINTERFACE_H_
 
-#include "HwInterface.h"
+#include "lima/HwInterface.h"
 
 namespace lima {
 namespace Ultra {

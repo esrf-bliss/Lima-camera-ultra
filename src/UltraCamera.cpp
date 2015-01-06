@@ -31,8 +31,8 @@
 #include <climits>
 #include <iomanip>
 #include "UltraCamera.h"
-#include "Exceptions.h"
-#include "Debug.h"
+#include "lima/Exceptions.h"
+#include "lima/Debug.h"
 
 using namespace lima;
 using namespace lima::Ultra;

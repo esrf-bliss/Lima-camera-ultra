@@ -27,12 +27,12 @@
 #ifndef ULTRACAMERA_H_
 #define ULTRACAMERA_H_
 
-#include "HwMaxImageSizeCallback.h"
-#include "HwBufferMgr.h"
-#include "HwInterface.h"
+#include "lima/HwMaxImageSizeCallback.h"
+#include "lima/HwBufferMgr.h"
+#include "lima/HwInterface.h"
 #include "UltraInterface.h"
 #include <ostream>
-#include "Debug.h"
+#include "lima/Debug.h"
 #include "UltraNet.h"
 
 using namespace std;
