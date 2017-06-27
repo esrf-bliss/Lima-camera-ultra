@@ -1,51 +1,52 @@
-############################################################################
+###########################################################################
 # This file is part of LImA, a Library for Image Acquisition
 #
-# Copyright (C) : 2009-2017
-# European Synchrotron Radiation Facility
-# BP 220, Grenoble 38043
-# FRANCE
-#
-# This is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3 of the License, or
-# (at your option) any later version.
-#
-# This software is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, see <http://www.gnu.org/licenses/>.
+#  Copyright (C) : 2009-2017
+#  European Synchrotron Radiation Facility
+#  CS40220 38043 Grenoble Cedex 9 
+#  FRANCE
+# 
+#  Contact: lima@esrf.fr
+# 
+#  This is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 3 of the License, or
+#  (at your option) any later version.
+# 
+#  This software is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+# 
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, see <http://www.gnu.org/licenses/>.
 ############################################################################
-# CMakeLists.txt for Ultra camera
 
-SET(CMAKE_SHARED_LINKER_FLAGS "-Wl,--add-needed")
+set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--add-needed")
 
 #SOURCEs
-SET(ultra_srcs src/UltraCamera.cpp  src/UltraInterface.cpp
+set(ultra_srcs src/UltraCamera.cpp  src/UltraInterface.cpp
 	 src/UltraDetInfoCtrlObj.cpp src/UltraSyncCtrlObj.cpp
 	 src/UltraNet.cpp)
 
-FILE(STRINGS "VERSION" ultra_vers)
-ADD_LIBRARY(limaultra SHARED ${ultra_srcs})
+file(STRINGS "VERSION" ultra_vers)
+add_library(limaultra SHARED ${ultra_srcs})
 
 #INCLUDEs
-TARGET_INCLUDE_DIRECTORIES(limaultra PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-TARGET_INCLUDE_DIRECTORIES(limaultra PUBLIC "${CMAKE_SOURCE_DIR}/camera/common/espia/include")
+target_include_directories(limaultra PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_include_directories(limaultra PUBLIC "${CMAKE_SOURCE_DIR}/camera/common/espia/include")
 
 #LIBRARIES
 
-TARGET_LINK_LIBRARIES(limaultra limacore)
+target_link_libraries(limaultra limacore)
 
 
-SET_TARGET_PROPERTIES(limaultra PROPERTIES VERSION ${ultra_vers} SOVERSION "1")
+set_target_properties(limaultra PROPERTIES VERSION ${ultra_vers} SOVERSION "1")
 
-INSTALL(TARGETS limaultra LIBRARY DESTINATION lib)
+install(TARGETS limaultra LIBRARY DESTINATION lib)
 
-IF(COMPILE_SIP)
-    SET(NAME "ultra")
+if(COMPILE_SIP)
+    set(NAME "ultra")
     include(CameraRunSIP)
-    INSTALL(FILES python/__init__.py DESTINATION "${PYTHON_SITE_PACKAGES_DIR}/Lima/Ultra")
-ENDIF()
+    install(FILES python/__init__.py DESTINATION "${PYTHON_SITE_PACKAGES_DIR}/Lima/Ultra")
+endif()
