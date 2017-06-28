@@ -21,32 +21,30 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, see <http://www.gnu.org/licenses/>.
 ############################################################################
+set(NAME "ultra")
 
 set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--add-needed")
 
 #SOURCEs
-set(ultra_srcs src/UltraCamera.cpp  src/UltraInterface.cpp
+set(${NAME}_srcs src/UltraCamera.cpp  src/UltraInterface.cpp
 	 src/UltraDetInfoCtrlObj.cpp src/UltraSyncCtrlObj.cpp
 	 src/UltraNet.cpp)
 
 file(STRINGS "VERSION" ultra_vers)
-add_library(limaultra SHARED ${ultra_srcs})
+add_library(lima${NAME} SHARED ${${NAME}_srcs})
 
 #INCLUDEs
-target_include_directories(limaultra PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_include_directories(limaultra PUBLIC "${CMAKE_SOURCE_DIR}/camera/common/espia/include")
+target_include_directories(lima${NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_include_directories(lima${NAME} PUBLIC "${CMAKE_SOURCE_DIR}/camera/common/espia/include")
 
 #LIBRARIES
+target_link_libraries(lima${NAME} limacore)
 
-target_link_libraries(limaultra limacore)
 
+include(CameraVERSION)
+install(TARGETS lima${NAME} LIBRARY DESTINATION lib)
 
-set_target_properties(limaultra PROPERTIES VERSION ${ultra_vers} SOVERSION "1")
-
-install(TARGETS limaultra LIBRARY DESTINATION lib)
-
-if(COMPILE_SIP)
-    set(NAME "ultra")
+if(LIMA_ENABLE_PYTHON)
     include(CameraRunSIP)
     install(FILES python/__init__.py DESTINATION "${PYTHON_SITE_PACKAGES_DIR}/Lima/Ultra")
 endif()
